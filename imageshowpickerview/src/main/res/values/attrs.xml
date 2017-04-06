@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- Head -->
+    <declare-styleable name="HeadView">
+
+        <!-- 首页 -->
+        <attr name="home" format="boolean" />
+        <!-- 标题 -->
+        <attr name="title" format="string" />
+        <!-- 是否编辑 -->
+        <attr name="isEdit" format="boolean" />
+        <!-- 左边图片 -->
+        <attr name="leftimg" format="boolean" />
+        <!-- 左边图片 -->
+        <attr name="leftimg_bg" format="integer" />
+        <!-- 中间图片 -->
+        <attr name="centerimg" format="boolean" />
+        <!-- 左边图片 -->
+        <attr name="centerimg_bg" format="integer" />
+        <!-- 右边图片 -->
+        <attr name="rightimg" format="boolean" />
+        <!-- 左边图片 -->
+        <attr name="rightimg_bg" format="integer" />
+    </declare-styleable>
+    <!-- 图片+文字 -->
+    <declare-styleable name="ImageButton">
+
+        <!-- 图片 -->
+        <attr name="img_bg" format="integer" />
+        <!-- 文字 -->
+        <attr name="tv" format="string" />
+    </declare-styleable>
+    <!-- 圆形边框按钮 -->
+    <declare-styleable name="CornerButton">
+
+        <!-- 显示文字 -->
+        <attr name="text" format="string" />
+        <!-- 背景图片 -->
+        <attr name="bgimg" format="integer" />
+        <!-- 背景颜色 -->
+        <attr name="bgcolor" format="integer" />
+        <!-- 文字颜色 -->
+        <attr name="textcolor" format="integer" />
+        <!-- 文字大小 -->
+        <attr name="textsize" format="dimension" />
+    </declare-styleable>
+    <!-- 圆形图片 -->
+    <declare-styleable name="CornerImageView">
+
+        <!-- 圆形边框宽 -->
+        <attr name="border_width" format="dimension" />
+        <!-- 圆形边框颜色 -->
+        <attr name="border_color" format="dimension" />
+    </declare-styleable>
+
+    <!-- 首页弹出菜单 -->
+
+    <declare-styleable name="Panel">
+
+        <!-- Defines panel animation duration in ms. -->
+        <attr name="animationDuration" format="integer" />
+        <!-- Defines panel position on the screen. -->
+        <attr name="position">
+
+            <!-- Panel placed at top of the screen. -->
+            <enum name="top" value="0" />
+            <!-- Panel placed at bottom of the screen. -->
+            <enum name="bottom" value="1" />
+            <!-- Panel placed at left of the screen. -->
+            <enum name="left" value="2" />
+            <!-- Panel placed at right of the screen. -->
+            <enum name="right" value="3" />
+        </attr>
+        <!-- Identifier for the child that represents the panel's handle. -->
+        <attr name="handle" format="reference" />
+        <!-- Identifier for the child that represents the panel's content. -->
+        <attr name="content" format="reference" />
+        <!-- Defines if flying gesture forces linear interpolator in animation. -->
+        <attr name="linearFlying" format="boolean" />
+        <!-- Defines size relative to parent (must be in form: nn%p). -->
+        <attr name="weight" format="fraction" />
+        <!-- Defines opened handle (drawable/color). -->
+        <attr name="openedHandle" format="reference|color" />
+        <!-- Defines closed handle (drawable/color). -->
+        <attr name="closedHandle" format="reference|color" />
+    </declare-styleable>
+    <declare-styleable name="ViewPagerIndicator">
+
+        <!-- Style of the circle indicator. -->
+        <attr name="vpiCirclePageIndicatorStyle" format="reference" />
+        <!-- Style of the icon indicator's views. -->
+        <attr name="vpiIconPageIndicatorStyle" format="reference" />
+        <!-- Style of the line indicator. -->
+        <attr name="vpiLinePageIndicatorStyle" format="reference" />
+        <!-- Style of the title indicator. -->
+        <attr name="vpiTitlePageIndicatorStyle" format="reference" />
+        <!-- Style of the tab indicator's tabs. -->
+        <attr name="vpiTabPageIndicatorStyle" format="reference" />
+        <!-- Style of the underline indicator. -->
+        <attr name="vpiUnderlinePageIndicatorStyle" format="reference" />
+    </declare-styleable>
+
+    <attr name="centered" format="boolean" />
+    <attr name="selectedColor" format="color" />
+    <attr name="strokeWidth" format="dimension" />
+    <attr name="unselectedColor" format="color" />
+
+    <declare-styleable name="CirclePageIndicator">
+
+        <!-- Whether or not the indicators should be centered. -->
+        <attr name="centered" />
+        <!-- Color of the filled circle that represents the current page. -->
+        <attr name="fillColor" format="color" />
+        <!-- Color of the filled circles that represents pages. -->
+        <attr name="pageColor" format="color" />
+        <!-- Orientation of the indicator. -->
+        <attr name="android:orientation" />
+        <!-- Radius of the circles. This is also the spacing between circles. -->
+        <attr name="radius" format="dimension" />
+        <!-- Whether or not the selected indicator snaps to the circles. -->
+        <attr name="snap" format="boolean" />
+        <!-- Color of the open circles. -->
+        <attr name="strokeColor" format="color" />
+        <!-- Width of the stroke used to draw the circles. -->
+        <attr name="strokeWidth" />
+        <!-- View background -->
+        <attr name="android:background" />
+    </declare-styleable>
+    <declare-styleable name="LinePageIndicator">
+
+        <!-- Whether or not the indicators should be centered. -->
+        <attr name="centered" />
+        <!-- Color of the unselected lines that represent the pages. -->
+        <attr name="unselectedColor" />
+        <!-- Color of the selected line that represents the current page. -->
+        <attr name="selectedColor" />
+        <!-- Width of each indicator line. -->
+        <attr name="lineWidth" format="dimension" />
+        <!-- Width of each indicator line's stroke. -->
+        <attr name="strokeWidth" />
+        <!-- Width of the gap between each indicator line. -->
+        <attr name="gapWidth" format="dimension" />
+        <!-- View background -->
+        <attr name="android:background" />
+    </declare-styleable>
+    <declare-styleable name="TitlePageIndicator">
+
+        <!-- Screen edge padding. -->
+        <attr name="clipPadding" format="dimension" />
+        <!-- Color of the footer line and indicator. -->
+        <attr name="footerColor" format="color" />
+        <!-- Height of the footer line. -->
+        <attr name="footerLineHeight" format="dimension" />
+        <!-- Style of the indicator. Default is triangle. -->
+        <attr name="footerIndicatorStyle">
+            <enum name="none" value="0" />
+            <enum name="triangle" value="1" />
+            <enum name="underline" value="2" />
+        </attr>
+        <!-- Height of the indicator above the footer line. -->
+        <attr name="footerIndicatorHeight" format="dimension" />
+        <!-- Left and right padding of the underline indicator. -->
+        <attr name="footerIndicatorUnderlinePadding" format="dimension" />
+        <!-- Padding between the bottom of the title and the footer. -->
+        <attr name="footerPadding" format="dimension" />
+        <!-- Position of the line. -->
+        <attr name="linePosition">
+            <enum name="bottom" value="0" />
+            <enum name="top" value="1" />
+        </attr>
+        <!-- Color of the selected title. -->
+        <attr name="selectedColor" />
+        <!-- Whether or not the selected item is displayed as bold. -->
+        <attr name="selectedBold" format="boolean" />
+        <!-- Color of regular titles. -->
+        <attr name="android:textColor" />
+        <!-- Size of title text. -->
+        <attr name="android:textSize" />
+        <!-- Padding between titles when bumping into each other. -->
+        <attr name="titlePadding" format="dimension" />
+        <!-- Padding between titles and the top of the View. -->
+        <attr name="topPadding" format="dimension" />
+        <!-- View background -->
+        <attr name="android:background" />
+    </declare-styleable>
+    <declare-styleable name="UnderlinePageIndicator">
+
+        <!-- Whether or not the selected indicator fades. -->
+        <attr name="fades" format="boolean" />
+        <!-- Length of the delay to fade the indicator. -->
+        <attr name="fadeDelay" format="integer" />
+        <!-- Length of the indicator fade to transparent. -->
+        <attr name="fadeLength" format="integer" />
+        <!-- Color of the selected line that represents the current page. -->
+        <attr name="selectedColor" />
+        <!-- View background -->
+        <attr name="android:background" />
+    </declare-styleable>
+    <declare-styleable name="swipelistviewstyle">
+        <attr name="right_width" format="dimension"></attr>
+    </declare-styleable>
+    <declare-styleable name="VerticalViewPager">
+        <attr name="orientation">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="gifView">
+
+        <!-- 图片来源 -->
+        <attr name="src" format="integer" />
+
+        <!-- 播放延迟 -->
+        <attr name="delay" format="integer" />
+
+        <!-- 设置是否停止 -->
+        <attr name="stop" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="SlideListView">
+        <attr name="slideAnimationTime" format="integer" />
+        <attr name="slideMode" format="enum">
+            <enum name="none" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+            <enum name="both" value="3" />
+        </attr>
+        <attr name="slideLeftAction" format="enum">
+            <enum name="scroll" value="0" />
+            <enum name="reveal" value="1" />
+        </attr>
+        <attr name="slideRightAction" format="enum">
+            <enum name="scroll" value="0" />
+            <enum name="reveal" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <item name="slide_id_front_view" type="id" />
+    <item name="slide_id_left_back_view" type="id" />
+    <item name="slide_id_right_back_view" type="id" />
+
+    <declare-styleable name="JDAdverView">
+        <attr name="gap" format="integer" />
+        <attr name="animDuration" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="PtrFrameLayout">
+
+        <!-- Optional. If you put header and content in xml, you can you these to specify them. -->
+        <attr name="ptr_header" format="reference" />
+        <attr name="ptr_content" format="reference" />
+
+        <!-- the resistance when you are moving the frame -->
+        <attr name="ptr_resistance" format="float" />
+
+        <!-- the ration of the height of the header to trigger refresh -->
+        <attr name="ptr_ratio_of_header_height_to_refresh" format="float" />
+        <attr name="ptr_duration_to_close" format="integer" />
+        <attr name="ptr_duration_to_close_header" format="integer" />
+
+        <!-- pull to refresh, otherwise release to refresh, default is release to refresh -->
+        <attr name="ptr_pull_to_fresh" format="boolean" />
+
+        <!-- keep header when refreshing -->
+        <attr name="ptr_keep_header_when_refresh" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="PtrClassicHeader">
+        <attr name="ptr_rotate_ani_time" format="integer" />
+    </declare-styleable>
+
+    <attr name="borderRadius" format="dimension" />
+    <attr name="type">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="borderRadius" />
+        <attr name="type" />
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_LayoutParams">
+        <attr name="layout_newLine" format="boolean" />
+        <attr name="layout_horizontalSpacing" format="dimension" />
+        <attr name="layout_verticalSpacing" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontalSpacing" format="dimension" />
+        <attr name="verticalSpacing" format="dimension" />
+        <attr name="debugDraw" format="boolean" />
+        <attr name="flowlayout_orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="TitleView">
+        <attr name="title_text" format="string|reference" />
+        <attr name="left_text" format="string|reference" />
+        <attr name="right_text" format="string|reference"></attr>
+    </declare-styleable>
+    <declare-styleable name="expandableLayout">
+        <attr name="ael_duration" format="integer" />
+        <attr name="ael_expanded" format="boolean" />
+        <attr name="ael_defaultChildIndex" format="integer" />
+        <attr name="ael_defaultPosition" format="dimension" />
+        <attr name="ael_orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="ael_interpolator" format="enum">
+            <enum name="accelerateDecelerate" value="0" />
+            <enum name="accelerate" value="1" />
+            <enum name="anticipate" value="2" />
+            <enum name="anticipateOvershoot" value="3" />
+            <enum name="bounce" value="4" />
+            <enum name="decelerate" value="5" />
+            <enum name="fastOutLinearIn" value="6" />
+            <enum name="fastOutSlowIn" value="7" />
+            <enum name="linear" value="8" />
+            <enum name="linearOutSlowIn" value="9" />
+            <enum name="overshoot" value="10" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="PullToRefresh">
+
+        <!-- A drawable to use as the background of the Refreshable View -->
+        <attr name="ptrRefreshableViewBackground" format="reference|color" />
+
+        <!-- A drawable to use as the background of the Header and Footer Loading Views -->
+        <attr name="ptrHeaderBackground" format="reference|color" />
+
+        <!-- Text Color of the Header and Footer Loading Views -->
+        <attr name="ptrHeaderTextColor" format="reference|color" />
+
+        <!-- Text Color of the Header and Footer Loading Views Sub Header -->
+        <attr name="ptrHeaderSubTextColor" format="reference|color" />
+
+        <!-- Mode of Pull-to-Refresh that should be used -->
+        <attr name="ptrMode">
+            <flag name="disabled" value="0x0" />
+            <flag name="pullFromStart" value="0x1" />
+            <flag name="pullFromEnd" value="0x2" />
+            <flag name="both" value="0x3" />
+            <flag name="manualOnly" value="0x4" />
+
+            <!-- These last two are depreacted -->
+            <flag name="pullDownFromTop" value="0x1" />
+            <flag name="pullUpFromBottom" value="0x2" />
+        </attr>
+
+        <!-- Whether the Indicator overlay(s) should be used -->
+        <attr name="ptrShowIndicator" format="reference|boolean" />
+
+        <!-- Drawable to use as Loading Indicator. Changes both Header and Footer. -->
+        <attr name="ptrDrawable" format="reference" />
+
+        <!-- Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. -->
+        <attr name="ptrDrawableStart" format="reference" />
+
+        <!-- Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. -->
+        <attr name="ptrDrawableEnd" format="reference" />
+
+        <!-- Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. -->
+        <attr name="ptrOverScroll" format="reference|boolean" />
+
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views -->
+        <attr name="ptrHeaderTextAppearance" format="reference" />
+
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views Sub Header -->
+        <attr name="ptrSubHeaderTextAppearance" format="reference" />
+
+        <!-- Style of Animation should be used displayed when pulling. -->
+        <attr name="ptrAnimationStyle">
+            <flag name="rotate" value="0x0" />
+            <flag name="flip" value="0x1" />
+        </attr>
+
+        <!-- Whether the user can scroll while the View is Refreshing -->
+        <attr name="ptrScrollingWhileRefreshingEnabled" format="reference|boolean" />
+
+        <!--
+        	Whether PullToRefreshListView has it's extras enabled. This allows the user to be 
+        	able to scroll while refreshing, and behaves better. It acheives this by adding
+        	Header and/or Footer Views to the ListView.
+        -->
+        <attr name="ptrListViewExtrasEnabled" format="reference|boolean" />
+
+        <!--
+        	Whether the Drawable should be continually rotated as you pull. This only
+        	takes effect when using the 'Rotate' Animation Style.
+        -->
+        <attr name="ptrRotateDrawableWhilePulling" format="reference|boolean" />
+
+        <!-- BELOW HERE ARE DEPRECEATED. DO NOT USE. -->
+        <attr name="ptrAdapterViewBackground" format="reference|color" />
+        <attr name="ptrDrawableTop" format="reference" />
+        <attr name="ptrDrawableBottom" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="PasswordInputView">
+        <attr name="pivBorderColor" format="color" />
+        <attr name="pivBorderWidth" format="dimension" />
+        <attr name="pivBorderRadius" format="dimension" />
+        <attr name="pivPasswordColor" format="color" />
+        <attr name="pivPasswordWidth" format="dimension" />
+        <attr name="pivPasswordRadius" format="dimension" />
+        <attr name="pivPasswordLength" format="integer" />
+    </declare-styleable>
+
+    <!--  2017.3.17 创建 竖向tablayout-->
+    <declare-styleable name="VerticalTabLayout">
+        <attr name="tab_indicator_color" format="color" />
+        <attr name="tab_text_select_color" format="color" />
+        <attr name="tab_text_unselect_color" format="color" />
+        <attr name="tab_indicator_width" format="dimension" />
+        <attr name="tab_indicator_corners" format="dimension" />
+        <attr name="tab_indicator_gravity" format="enum">
+            <enum name="left" value="3" />
+            <enum name="right" value="5" />
+            <enum name="fill" value="119" />
+        </attr>
+        <attr name="tab_margin" format="dimension" />
+        <attr name="tab_mode" format="enum">
+            <enum name="fixed" value="10" />
+            <enum name="scrollable" value="11" />
+        </attr>
+        <attr name="tab_height" format="dimension"></attr>
+    </declare-styleable>
+
+    <!--  2017.3.17 创建 banner广告条属性-->
+    <declare-styleable name="Banner">
+        <attr name="delay_time" format="integer" />
+        <attr name="scroll_time" format="integer" />
+        <attr name="is_auto_play" format="boolean" />
+        <attr name="show_yun" format="boolean" />
+        <attr name="title_background" format="color|reference" />
+        <attr name="title_textcolor" format="color" />
+        <attr name="title_textsize" format="dimension" />
+        <attr name="title_height" format="dimension" />
+        <attr name="indicator_width" format="dimension" />
+        <attr name="indicator_height" format="dimension" />
+        <attr name="indicator_margin" format="dimension" />
+        <attr name="indicator_drawable_selected" format="reference" />
+        <attr name="indicator_drawable_unselected" format="reference" />
+        <attr name="layout_id" format="reference" />
+        <attr name="image_scale_type" format="enum">
+            <enum name="center" value="0" />
+            <enum name="center_crop" value="1" />
+            <enum name="center_inside" value="2" />
+            <enum name="fit_center" value="3" />
+            <enum name="fit_end" value="4" />
+            <enum name="fit_start" value="5" />
+            <enum name="fit_xy" value="6" />
+            <enum name="matrix" value="7" />
+        </attr>
+        <!--<attr name="indicator_animator" format="reference" />-->
+        <!--<attr name="indicator_animator_reverse" format="reference" />-->
+    </declare-styleable>
+
+</resources>
