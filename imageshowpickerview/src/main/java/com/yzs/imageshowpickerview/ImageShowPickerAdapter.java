@@ -68,16 +68,7 @@ public class ImageShowPickerAdapter<T extends ImageShowPickerBean> extends Recyc
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         if (null != list.get(position)) {
-            Class clazz = list.get(position).getClass();
-            try {
-                //根据属性名获得属性值
-                String ss = clazz.getDeclaredField(this.str_url).get(clazz).toString();
-                imageLoaderInterface.displayImage(context, ss, holder.iv_pic);
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
+            imageLoaderInterface.displayImage(context, list.get(position).getImageShowPickerUrl(), holder.iv_pic);
         }
 
 
