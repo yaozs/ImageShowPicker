@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 边框的颜色 -->
+    <item>
+        <shape>
+            <solid android:color="@android:color/darker_gray" />
+        </shape>
+
+    </item>
+    <item
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0.5dp"
+        android:top="0dp">
+        <!--设置只有底部有边框-->
+        <shape>
+            <!-- 主体背景颜色值 -->
+            <solid android:color="@android:color/darker_gray" />
+        </shape>
+    </item>
+</layer-list>
