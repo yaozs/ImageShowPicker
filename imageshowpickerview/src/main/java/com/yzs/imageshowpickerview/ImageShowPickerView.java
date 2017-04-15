@@ -28,14 +28,25 @@ public class ImageShowPickerView extends FrameLayout {
      */
     private ImageLoaderInterface imageLoaderInterface;
 
+    private ImageShowPickerListener pickerListener;
+
+    public void setPickerListener(ImageShowPickerListener pickerListener) {
+        this.pickerListener = pickerListener;
+    }
+
     private Context context;
 
     public void setImageLoaderInterface(ImageLoaderInterface imageLoaderInterface) {
         this.imageLoaderInterface = imageLoaderInterface;
-        adapter = new ImageShowPickerAdapter(9, context, list, imageLoaderInterface);
-        recyclerView.setAdapter(adapter);
+
     }
 
+
+    public void show() {
+        adapter = new ImageShowPickerAdapter(9, context, list, imageLoaderInterface);
+        adapter.setPickerListener(pickerListener);
+        recyclerView.setAdapter(adapter);
+    }
 
     private ImageShowPickerAdapter adapter;
 
@@ -80,7 +91,7 @@ public class ImageShowPickerView extends FrameLayout {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ImageShowPickerView);
         mPicSize = typedArray.getDimensionPixelSize(R.styleable.ImageShowPickerView_pic_size, dp2px(getContext(), picSize));
         isShowDel = typedArray.getBoolean(R.styleable.ImageShowPickerView_is_show_del, false);
-        mAddLabel = typedArray.getResourceId(R.styleable.ImageShowPickerView_add_label, R.drawable.image_show_piceker_add);
+        mAddLabel = typedArray.getResourceId(R.styleable.ImageShowPickerView_add_label, R.mipmap.image_show_piceker_add);
         mDelLabel = typedArray.getResourceId(R.styleable.ImageShowPickerView_del_label, R.mipmap.image_show_piceker_del);
         typedArray.recycle();
     }
@@ -101,12 +112,14 @@ public class ImageShowPickerView extends FrameLayout {
 
     public <T extends ImageShowPickerBean> void addData(T bean) {
         this.list.add(bean);
-        adapter.notifyItemChanged(list.size());
+        if (adapter != null)
+            adapter.notifyItemChanged(list.size());
     }
 
     public <T extends ImageShowPickerBean> void addData(List<T> list) {
         this.list.addAll(list);
-        adapter.notifyDataSetChanged();
+        if (adapter != null)
+            adapter.notifyDataSetChanged();
     }
 
 }
