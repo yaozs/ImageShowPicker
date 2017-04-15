@@ -26,10 +26,6 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
     public ImageLoaderInterface imageLoaderInterface;
     private ImageShowPickerListener pickerListener;
 
-    public void setPickerListener(ImageShowPickerListener pickerListener) {
-        this.pickerListener = pickerListener;
-    }
-
     private String str_url;
     private int delId;
 
@@ -49,11 +45,12 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
         this.delId = delId;
     }
 
-    public ImageShowPickerAdapter(int mMaxNum, Context context, List<ImageShowPickerBean> list, ImageLoaderInterface imageLoaderInterface) {
+    public ImageShowPickerAdapter(int mMaxNum, Context context, List<ImageShowPickerBean> list, ImageLoaderInterface imageLoaderInterface, ImageShowPickerListener pickerListener) {
         this.mMaxNum = mMaxNum;
         this.context = context;
         this.list = list;
         this.imageLoaderInterface = imageLoaderInterface;
+        this.pickerListener = pickerListener;
     }
 
     @Override
@@ -95,21 +92,25 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
 
     @Override
     public void onDelClickListener(int position) {
-
+        getItemCount();
+        list.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRemoved(position-1);
+        notifyDataSetChanged();
     }
 
     @Override
     public void onPicClickListener(int position) {
         if (position == list.size()) {
-            Log.e("onPicClickListener","aaaaaaaaa");
+            Log.e("onPicClickListener", "aaaaaaaaa");
             if (pickerListener != null) {
                 pickerListener.addOnClickListener();
-                Log.e("onPicClickListener","bbbbbbbbb");
+                Log.e("onPicClickListener", "bbbbbbbbb");
             }
         } else {
-            Log.e("onPicClickListener","cccccccccccc");
+            Log.e("onPicClickListener", "cccccccccccc");
             if (pickerListener != null) {
-                Log.e("onPicClickListener","ddddddddddddddd");
+                Log.e("onPicClickListener", "ddddddddddddddd");
                 pickerListener.picOnClickListener(list, position);
             }
         }
@@ -143,14 +144,14 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
 
         @Override
         public void onClick(View v) {
-            Log.e("Adapter","1111111111");
+            Log.e("Adapter", "1111111111");
             int i = v.getId();
             if (i == R.id.iv_image_show_picker_pic) {
-                Log.e("Adapter","iv_image_show_picker_pic"+getLayoutPosition());
+                Log.e("Adapter", "iv_image_show_picker_pic" + getLayoutPosition());
                 picOnClickListener.onPicClickListener(getLayoutPosition());
             } else if (i == R.id.iv_image_show_picker_del) {
                 picOnClickListener.onDelClickListener(getLayoutPosition());
-                Log.e("Adapter","iv_image_show_picker_del"+getLayoutPosition());
+                Log.e("Adapter", "iv_image_show_picker_del" + getLayoutPosition());
             }
         }
     }

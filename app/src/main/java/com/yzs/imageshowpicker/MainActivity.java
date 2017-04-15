@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         list.add(new ImageBean("http://pic78.huitu.com/res/20160604/1029007_20160604114552332126_1.jpg"));
         list.add(new ImageBean("http://img05.tooopen.com/images/20150531/tooopen_sy_127457023651.jpg"));
         view.addData(list);
-        view.show();
         view.setPickerListener(new ImageShowPickerListener() {
             @Override
             public void addOnClickListener() {
@@ -43,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, list.size() + "========" + position, Toast.LENGTH_SHORT).show();
             }
         });
+        view.show();
 
     }
 }

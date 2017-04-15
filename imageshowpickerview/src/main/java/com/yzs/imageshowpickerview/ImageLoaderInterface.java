@@ -18,6 +18,5 @@ public interface ImageLoaderInterface<T extends View> extends Serializable {
 
     void displayImage(Context context, @DrawableRes Integer resId, T imageView);
 
-
     T createImageView(Context context);
 }

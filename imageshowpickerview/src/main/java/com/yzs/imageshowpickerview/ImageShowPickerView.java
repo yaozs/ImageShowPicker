@@ -43,8 +43,7 @@ public class ImageShowPickerView extends FrameLayout {
 
 
     public void show() {
-        adapter = new ImageShowPickerAdapter(9, context, list, imageLoaderInterface);
-        adapter.setPickerListener(pickerListener);
+        adapter = new ImageShowPickerAdapter(9, context, list, imageLoaderInterface, pickerListener);
         recyclerView.setAdapter(adapter);
     }
 
@@ -112,8 +111,11 @@ public class ImageShowPickerView extends FrameLayout {
 
     public <T extends ImageShowPickerBean> void addData(T bean) {
         this.list.add(bean);
-        if (adapter != null)
+        if (adapter != null) {
+
+            adapter.notifyItemChanged(list.size() - 1);
             adapter.notifyItemChanged(list.size());
+        }
     }
 
     public <T extends ImageShowPickerBean> void addData(List<T> list) {
