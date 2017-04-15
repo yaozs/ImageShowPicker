@@ -52,14 +52,26 @@ public class ImageShowPickerView extends FrameLayout {
     private List<ImageShowPickerBean> list;
 
     private int picSize = 80;
-
+    /**
+     * 单个item大小
+     */
     private int mPicSize;
-
+    /**
+     * 添加图片
+     */
     private int mAddLabel;
-
+    /**
+     * 删除图片
+     */
     private int mDelLabel;
-
+    /**
+     * 是否显示删除
+     */
     private boolean isShowDel;
+    /**
+     * 单行显示数量，默认4
+     */
+    private int oneLineShowNum;
 
     public ImageShowPickerView(@NonNull Context context) {
         this(context, null);
@@ -80,7 +92,7 @@ public class ImageShowPickerView extends FrameLayout {
         list = new ArrayList<>();
         viewTypedArray(context, attrs);
         recyclerView = new RecyclerView(context);
-        recyclerView.setLayoutManager(new GridLayoutManager(context, 4));
+        recyclerView.setLayoutManager(new MyGridLayoutManager(context, oneLineShowNum));
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(4 * dp2px(getContext(), picSize), 2 * dp2px(getContext(), picSize));
         addView(recyclerView);
         this.setLayoutParams(layoutParams);
@@ -92,6 +104,7 @@ public class ImageShowPickerView extends FrameLayout {
         isShowDel = typedArray.getBoolean(R.styleable.ImageShowPickerView_is_show_del, false);
         mAddLabel = typedArray.getResourceId(R.styleable.ImageShowPickerView_add_label, R.mipmap.image_show_piceker_add);
         mDelLabel = typedArray.getResourceId(R.styleable.ImageShowPickerView_del_label, R.mipmap.image_show_piceker_del);
+        oneLineShowNum = typedArray.getInt(R.styleable.ImageShowPickerView_one_line_show_num, 4);
         typedArray.recycle();
     }
 

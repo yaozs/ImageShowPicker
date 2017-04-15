@@ -9,7 +9,7 @@ import android.view.View;
  * Date: 2017/4/15
  */
 
-public interface PicOnClickListener {
+public interface ImageShowPickerPicListener {
 
     void onDelClickListener(int position);
 

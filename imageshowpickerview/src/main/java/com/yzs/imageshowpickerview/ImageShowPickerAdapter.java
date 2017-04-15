@@ -18,7 +18,7 @@ import java.util.List;
  * Date: 2017/4/10
  */
 
-public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPickerAdapter.ViewHolder> implements PicOnClickListener {
+public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPickerAdapter.ViewHolder> implements ImageShowPickerPicListener {
 
     private int mMaxNum;
     private Context context;
@@ -26,24 +26,14 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
     public ImageLoaderInterface imageLoaderInterface;
     private ImageShowPickerListener pickerListener;
 
-    private String str_url;
-    private int delId;
+    private int iconHeight;
 
-    public String getUrl() {
-        return str_url;
-    }
+    private int delPicRes;
 
-    public void setUrl(String url) {
-        this.str_url = url;
-    }
+    private int addPicRes;
 
-    public int getDelId() {
-        return delId;
-    }
 
-    public void setDelId(int delId) {
-        this.delId = delId;
-    }
+
 
     public ImageShowPickerAdapter(int mMaxNum, Context context, List<ImageShowPickerBean> list, ImageLoaderInterface imageLoaderInterface, ImageShowPickerListener pickerListener) {
         this.mMaxNum = mMaxNum;
@@ -68,18 +58,17 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (list.size() == 0 || list.size() == position) {
-            Log.e("list.size() == 0 ", "========" + position);
-            holder.iv_pic.setBackgroundResource(R.mipmap.image_show_piceker_add);
+            imageLoaderInterface.displayImage(context, R.mipmap.image_show_piceker_add, holder.iv_pic);
+            holder.iv_del.setVisibility(View.GONE);
         } else {
-            Log.e("list.size() != 0 ", "========" + position);
             if (null == list.get(position).getImageShowPickerUrl() || "".equals(list.get(position).getImageShowPickerUrl())) {
                 imageLoaderInterface.displayImage(context, list.get(position).getImageShowPickerDelRes(), holder.iv_pic);
             } else {
                 imageLoaderInterface.displayImage(context, list.get(position).getImageShowPickerUrl(), holder.iv_pic);
             }
+            holder.iv_del.setVisibility(View.VISIBLE);
             holder.iv_del.setImageResource(R.mipmap.image_show_piceker_del);
         }
-
 
     }
 
@@ -92,25 +81,23 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
 
     @Override
     public void onDelClickListener(int position) {
-        getItemCount();
         list.remove(position);
         notifyItemRemoved(position);
-        notifyItemRemoved(position-1);
-        notifyDataSetChanged();
+        if (list.size() - 1 >= 0 && list.get(list.size() - 1) == null) {
+            notifyItemChanged(list.size() - 1);
+        } else if (list.size() - 1 == 0) {
+            notifyItemChanged(0);
+        }
     }
 
     @Override
     public void onPicClickListener(int position) {
         if (position == list.size()) {
-            Log.e("onPicClickListener", "aaaaaaaaa");
             if (pickerListener != null) {
                 pickerListener.addOnClickListener();
-                Log.e("onPicClickListener", "bbbbbbbbb");
             }
         } else {
-            Log.e("onPicClickListener", "cccccccccccc");
             if (pickerListener != null) {
-                Log.e("onPicClickListener", "ddddddddddddddd");
                 pickerListener.picOnClickListener(list, position);
             }
         }
@@ -121,10 +108,10 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public View iv_pic;
         public ImageView iv_del;
-        private PicOnClickListener picOnClickListener;
+        private ImageShowPickerPicListener picOnClickListener;
 
 
-        public ViewHolder(View view, ImageLoaderInterface imageLoaderInterface, PicOnClickListener picOnClickListener) {
+        public ViewHolder(View view, ImageLoaderInterface imageLoaderInterface, ImageShowPickerPicListener picOnClickListener) {
             super(view);
             this.picOnClickListener = picOnClickListener;
             iv_pic = imageLoaderInterface.createImageView(view.getContext());
@@ -144,14 +131,11 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
 
         @Override
         public void onClick(View v) {
-            Log.e("Adapter", "1111111111");
             int i = v.getId();
             if (i == R.id.iv_image_show_picker_pic) {
-                Log.e("Adapter", "iv_image_show_picker_pic" + getLayoutPosition());
                 picOnClickListener.onPicClickListener(getLayoutPosition());
             } else if (i == R.id.iv_image_show_picker_del) {
                 picOnClickListener.onDelClickListener(getLayoutPosition());
-                Log.e("Adapter", "iv_image_show_picker_del" + getLayoutPosition());
             }
         }
     }
