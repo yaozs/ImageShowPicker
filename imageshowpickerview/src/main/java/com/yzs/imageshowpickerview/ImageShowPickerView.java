@@ -52,12 +52,11 @@ public class ImageShowPickerView extends FrameLayout {
     private boolean isShowDel;
 
     public ImageShowPickerView(@NonNull Context context) {
-        super(context);
+        this(context, null);
     }
 
     public ImageShowPickerView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init(getContext(), attrs);
+        this(context, attrs, 0);
     }
 
     public ImageShowPickerView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
@@ -71,8 +70,10 @@ public class ImageShowPickerView extends FrameLayout {
         list = new ArrayList<>();
         viewTypedArray(context, attrs);
         recyclerView = new RecyclerView(context);
-        recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(context, 4));
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(4 * dp2px(getContext(), picSize), 2 * dp2px(getContext(), picSize));
         addView(recyclerView);
+        this.setLayoutParams(layoutParams);
     }
 
     private void viewTypedArray(Context context, AttributeSet attrs) {
@@ -80,7 +81,7 @@ public class ImageShowPickerView extends FrameLayout {
         mPicSize = typedArray.getDimensionPixelSize(R.styleable.ImageShowPickerView_pic_size, dp2px(getContext(), picSize));
         isShowDel = typedArray.getBoolean(R.styleable.ImageShowPickerView_is_show_del, false);
         mAddLabel = typedArray.getResourceId(R.styleable.ImageShowPickerView_add_label, R.drawable.image_show_piceker_add);
-        mDelLabel = typedArray.getResourceId(R.styleable.ImageShowPickerView_del_label, R.drawable.image_show_piceker_del);
+        mDelLabel = typedArray.getResourceId(R.styleable.ImageShowPickerView_del_label, R.mipmap.image_show_piceker_del);
         typedArray.recycle();
     }
 
@@ -97,5 +98,15 @@ public class ImageShowPickerView extends FrameLayout {
         return (int) (dpValue * scale + 0.5f);
     }
 
+
+    public <T extends ImageShowPickerBean> void addData(T bean) {
+        this.list.add(bean);
+        adapter.notifyItemChanged(list.size());
+    }
+
+    public <T extends ImageShowPickerBean> void addData(List<T> list) {
+        this.list.addAll(list);
+        adapter.notifyDataSetChanged();
+    }
 
 }

@@ -8,9 +8,10 @@
 
 
     <com.yzs.imageshowpickerview.ImageShowPickerView
-        android:id="@+id/image"
+        android:id="@+id/imageshowpicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#7a3"
         app:pic_size="100dp" />
 
 </LinearLayout>

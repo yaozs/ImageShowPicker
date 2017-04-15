@@ -1,6 +1,7 @@
 package com.yzs.imageshowpickerview;
 
 import android.content.Context;
+import android.support.annotation.DrawableRes;
 import android.view.View;
 
 import java.io.Serializable;
@@ -13,7 +14,9 @@ import java.io.Serializable;
  */
 public interface ImageLoaderInterface<T extends View> extends Serializable {
 
-    void displayImage(Context context, Object path, T imageView);
+    void displayImage(Context context, String path, T imageView);
+
+    void displayImage(Context context, @DrawableRes Integer resId, T imageView);
 
 
     T createImageView(Context context);
