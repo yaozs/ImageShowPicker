@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 /**
  * Author 姚智胜
  * Version V1.0版本
- * Description:
+ * Description: 处理recyclerview在adapter内调用notifyItemChanged崩溃的解决方法
  * Date: 2017/4/15
  */
 

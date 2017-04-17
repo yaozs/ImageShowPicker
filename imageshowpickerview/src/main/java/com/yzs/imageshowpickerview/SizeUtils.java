@@ -5,7 +5,7 @@ import android.content.Context;
 /**
  * Author: 姚智胜
  * Version: V1.0版本
- * Description:
+ * Description: dp转换工具类
  * Date: 2017/4/17
  */
 

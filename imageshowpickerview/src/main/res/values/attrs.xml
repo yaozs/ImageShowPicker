@@ -15,7 +15,7 @@
         <attr name="is_show_del" format="boolean" />
         <!-- 是否展示动画-->
         <attr name="is_show_anim" format="boolean" />
-        <!-- 是否显示删除按钮-->
+        <!-- 单行显示数量-->
         <attr name="one_line_show_num" format="integer" />
 
     </declare-styleable>

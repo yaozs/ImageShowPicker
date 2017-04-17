@@ -1,11 +1,9 @@
 package com.yzs.imageshowpickerview;
 
-import android.view.View;
-
 /**
  * Author 姚智胜
  * Version V1.0版本
- * Description:
+ * Description: view内部使用的点击监听
  * Date: 2017/4/15
  */
 
