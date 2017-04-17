@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yzs.imageshowpicker.MainActivity">
+   android:orientation="vertical">
 
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:background="#a83"
+        android:layout_height="wrap_content" />
 
-    <com.yzs.imageshowpickerview.ImageShowPickerView
-        android:id="@+id/imageshowpicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:pic_size="100dp" />
+    <!--<com.yzs.imageshowpickerview.ImageShowPickerView-->
+        <!--android:id="@+id/imageshowpicker"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorAccent"-->
+        <!--app:is_show_anim="true" />-->
 
 </LinearLayout>

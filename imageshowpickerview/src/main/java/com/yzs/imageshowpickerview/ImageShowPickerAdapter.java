@@ -2,7 +2,6 @@ package com.yzs.imageshowpickerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,14 +25,35 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
     public ImageLoaderInterface imageLoaderInterface;
     private ImageShowPickerListener pickerListener;
 
-    private int iconHeight;
+    private static int iconHeight;
 
     private int delPicRes;
 
     private int addPicRes;
 
+    private boolean isShowAnim;
 
+    private boolean isShowDel;
 
+    public void setShowDel(boolean showDel) {
+        isShowDel = showDel;
+    }
+
+    public void setShowAnim(boolean showAnim) {
+        isShowAnim = showAnim;
+    }
+
+    public void setIconHeight(int iconHeight) {
+        this.iconHeight = iconHeight;
+    }
+
+    public void setDelPicRes(int delPicRes) {
+        this.delPicRes = delPicRes;
+    }
+
+    public void setAddPicRes(int addPicRes) {
+        this.addPicRes = addPicRes;
+    }
 
     public ImageShowPickerAdapter(int mMaxNum, Context context, List<ImageShowPickerBean> list, ImageLoaderInterface imageLoaderInterface, ImageShowPickerListener pickerListener) {
         this.mMaxNum = mMaxNum;
@@ -58,7 +78,7 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (list.size() == 0 || list.size() == position) {
-            imageLoaderInterface.displayImage(context, R.mipmap.image_show_piceker_add, holder.iv_pic);
+            imageLoaderInterface.displayImage(context, addPicRes, holder.iv_pic);
             holder.iv_del.setVisibility(View.GONE);
         } else {
             if (null == list.get(position).getImageShowPickerUrl() || "".equals(list.get(position).getImageShowPickerUrl())) {
@@ -66,8 +86,12 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
             } else {
                 imageLoaderInterface.displayImage(context, list.get(position).getImageShowPickerUrl(), holder.iv_pic);
             }
-            holder.iv_del.setVisibility(View.VISIBLE);
-            holder.iv_del.setImageResource(R.mipmap.image_show_piceker_del);
+            if (isShowDel) {
+                holder.iv_del.setVisibility(View.VISIBLE);
+                holder.iv_del.setImageResource(delPicRes);
+            } else {
+                holder.iv_del.setVisibility(View.GONE);
+            }
         }
 
     }
@@ -82,23 +106,30 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
     @Override
     public void onDelClickListener(int position) {
         list.remove(position);
-        notifyItemRemoved(position);
-        if (list.size() - 1 >= 0 && list.get(list.size() - 1) == null) {
-            notifyItemChanged(list.size() - 1);
-        } else if (list.size() - 1 == 0) {
-            notifyItemChanged(0);
+        if (isShowAnim) {
+            notifyItemRemoved(position);
+            if (list.size() - 1 >= 0 && list.get(list.size() - 1) == null) {
+                notifyItemChanged(list.size() - 1);
+            } else if (list.size() - 1 == 0) {
+                notifyItemChanged(0);
+            }
+        } else {
+            notifyDataSetChanged();
         }
+        pickerListener.delOnClickListener(position, mMaxNum - list.size());
     }
 
     @Override
     public void onPicClickListener(int position) {
         if (position == list.size()) {
             if (pickerListener != null) {
-                pickerListener.addOnClickListener();
+                pickerListener.addOnClickListener(mMaxNum - position - 1);
             }
         } else {
             if (pickerListener != null) {
-                pickerListener.picOnClickListener(list, position);
+
+                pickerListener.picOnClickListener(list, position, mMaxNum > list.size() ? mMaxNum - list.size() - 1 :
+                        (list.get(mMaxNum - 1) == null ? 1 : 0));
             }
         }
     }
@@ -115,7 +146,8 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
             super(view);
             this.picOnClickListener = picOnClickListener;
             iv_pic = imageLoaderInterface.createImageView(view.getContext());
-            FrameLayout.LayoutParams pic_params = new FrameLayout.LayoutParams(ImageShowPickerView.dp2px(view.getContext(), 80), ImageShowPickerView.dp2px(view.getContext(), 80));
+            FrameLayout.LayoutParams pic_params = new FrameLayout.LayoutParams(iconHeight,
+                    iconHeight);
             pic_params.setMargins(10, 10, 10, 10);
             iv_pic.setLayoutParams(pic_params);
             iv_del = new ImageView(view.getContext());

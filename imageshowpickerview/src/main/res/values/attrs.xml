@@ -5,12 +5,16 @@
 
         <!-- 单张图片大小（宽高一样） -->
         <attr name="pic_size" format="dimension" />
+        <!-- 最大数量 -->
+        <attr name="max_num" format="integer" />
         <!-- 添加图片 -->
         <attr name="add_label" format="reference" />
         <!-- 删除图片 -->
         <attr name="del_label" format="reference" />
         <!-- 是否显示删除按钮-->
         <attr name="is_show_del" format="boolean" />
+        <!-- 是否展示动画-->
+        <attr name="is_show_anim" format="boolean" />
         <!-- 是否显示删除按钮-->
         <attr name="one_line_show_num" format="integer" />
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.yzs.imageshowpickerview.ImageShowPickerView
+        android:id="@+id/it_picker_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#eee"
+        app:is_show_del="true" />
+
+    <!--&lt;!&ndash; 单张图片大小（宽高一样） &ndash;&gt;-->
+    <!--<attr name="pic_size" format="dimension" />-->
+    <!--&lt;!&ndash; 最大数量 &ndash;&gt;-->
+    <!--<attr name="max_num" format="integer" />-->
+    <!--&lt;!&ndash; 添加图片 &ndash;&gt;-->
+    <!--<attr name="add_label" format="reference" />-->
+    <!--&lt;!&ndash; 删除图片 &ndash;&gt;-->
+    <!--<attr name="del_label" format="reference" />-->
+    <!--&lt;!&ndash; 是否显示删除按钮&ndash;&gt;-->
+    <!--<attr name="is_show_del" format="boolean" />-->
+    <!--&lt;!&ndash; 是否展示动画&ndash;&gt;-->
+    <!--<attr name="is_show_anim" format="boolean" />-->
+    <!--&lt;!&ndash; 是否显示删除按钮&ndash;&gt;-->
+    <!--<attr name="one_line_show_num" format="integer" />-->
+
+</LinearLayout>

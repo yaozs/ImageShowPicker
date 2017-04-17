@@ -11,7 +11,9 @@ import java.util.List;
 
 public interface ImageShowPickerListener {
 
-    void addOnClickListener();
+    void addOnClickListener(int remainNum);
 
-    void picOnClickListener(List<ImageShowPickerBean> list, int position);
+    void picOnClickListener(List<ImageShowPickerBean> list, int position,int remainNum);
+
+    void delOnClickListener(int position,int remainNum);
 }
