@@ -9,7 +9,9 @@
 
         朋友是否一次又一次的写着放朋友圈的选择发布框架就是这个
 ![image](https://github.com/yaozs/ImageShowPicker/blob/master/pic/weixin_pic.jpg)
-        现在支持的框架来了
+
+## 现在支持的框架来了
+
 ![image](https://github.com/yaozs/ImageShowPicker/blob/master/pic/imageshowpickerview.gif)
 
 
@@ -86,6 +88,8 @@ dependencies{
 
 ## 本人的其他项目
 [YzsLib——超好用的开发框架](https://github.com/yaozs/YzsLib)
+
+
 [YzsBaseActivity——简化到一定境界的BaseActivity](https://github.com/yaozs/YzsBaseActivity)
 
 
