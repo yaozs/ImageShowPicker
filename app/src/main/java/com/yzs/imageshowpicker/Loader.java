@@ -27,8 +27,4 @@ public class Loader extends ImageLoader {
         imageView.setImageResource(resId);
     }
 
-    @Override
-    public ImageView createImageView(Context context) {
-        return super.createImageView(context);
-    }
 }

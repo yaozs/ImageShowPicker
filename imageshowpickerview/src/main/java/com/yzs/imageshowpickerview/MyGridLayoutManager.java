@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 
 /**
  * Author 姚智胜
@@ -13,6 +14,8 @@ import android.util.AttributeSet;
  */
 
 public class MyGridLayoutManager extends GridLayoutManager {
+    private static final String TAG = "MyGridLayoutManager";
+
     public MyGridLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
@@ -37,6 +40,15 @@ public class MyGridLayoutManager extends GridLayoutManager {
             super.onLayoutChildren(recycler, state);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void collectAdjacentPrefetchPositions(int dx, int dy, RecyclerView.State state, LayoutPrefetchRegistry layoutPrefetchRegistry) {
+        try {
+            super.collectAdjacentPrefetchPositions(dx, dy, state, layoutPrefetchRegistry);
+        } catch (IllegalArgumentException e) {
+            Log.e("TAG","catch exception");
         }
     }
 }

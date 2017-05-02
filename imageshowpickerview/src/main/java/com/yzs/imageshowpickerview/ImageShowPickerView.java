@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
  * Date: 2017/4/6
  */
 
-public class ImageShowPickerView extends FrameLayout {
+public class ImageShowPickerView extends LinearLayout {
 
     private RecyclerView recyclerView;
     /**
@@ -180,6 +180,20 @@ public class ImageShowPickerView extends FrameLayout {
         MyGridLayoutManager layoutManager = new MyGridLayoutManager(context, oneLineShowNum);
         layoutManager.setAutoMeasureEnabled(true);
         recyclerView.setLayoutManager(layoutManager);
+
+//        ViewGroup.LayoutParams layoutParams = recyclerView.getLayoutParams();
+//        //计算行数
+//        int lineNumber = list.size()%oneLineShowNum==0? list.size()/oneLineShowNum:(list.size()/oneLineShowNum) +1;
+//        //计算高度=行数＊每行的高度 ＋(行数－1)＊10dp的margin ＋ 10dp（为了居中）
+//        //高度的计算需要自己好好理解，否则会产生嵌套recyclerView可以滑动的现象
+////        layoutParams.height =SizeUtils.getSizeUtils().dp2px(getContext(), lineNumber *mPicSize) ;
+//        layoutParams.height =lineNumber *mPicSize ;
+//
+//        Log.e("lineNumber",""+lineNumber);
+//        Log.e("height",""+layoutParams.height);
+//
+//        recyclerView.setLayoutParams(layoutParams);
+
         adapter = new ImageShowPickerAdapter(maxNum, context, list, imageLoaderInterface, pickerListener);
         adapter.setAddPicRes(mAddLabel);
         adapter.setDelPicRes(mDelLabel);
@@ -187,6 +201,7 @@ public class ImageShowPickerView extends FrameLayout {
         adapter.setShowDel(isShowDel);
         adapter.setShowAnim(isShowAnim);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     /**
