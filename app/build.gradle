@@ -29,4 +29,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':imageshowpickerview')
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.zhihu.android:matisse:0.4.3'
+    compile 'com.yanzhenjie:permission:1.0.7'
 }
