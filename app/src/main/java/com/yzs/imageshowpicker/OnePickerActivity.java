@@ -64,7 +64,7 @@ public class OnePickerActivity extends AppCompatActivity {
                 Matisse.from(OnePickerActivity.this)
                         .choose(MimeType.allOf())
                         .countable(true)
-                        .maxSelectable(9)
+                        .maxSelectable(remainNum + 1)
                         .gridExpectedSize(300)
                         .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
                         .thumbnailScale(0.85f)
@@ -145,9 +145,9 @@ public class OnePickerActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
 //            mSelected = Matisse.obtainResult(data);
             List<Uri> uriList = Matisse.obtainResult(data);
-            if (uriList.size()==1){
+            if (uriList.size() == 1) {
                 pickerView.addData(new ImageBean(getRealFilePath(OnePickerActivity.this, uriList.get(0))));
-            }else {
+            } else {
                 List<ImageBean> list = new ArrayList<>();
                 for (Uri uri : uriList) {
                     list.add(new ImageBean(getRealFilePath(OnePickerActivity.this, uri)));

@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
         for (int i = 0; i < 10; i++) {
             List<ImageBean> list = new ArrayList<>();
-            for (int j = 0; j < 10; j++) {
+            for (int j = 0; j < 2; j++) {
 
                 list.add(new ImageBean("http://img02.tooopen.com/images/20140504/sy_60294738471.jpg"));
                 list.add(new ImageBean("http://pic.58pic.com/58pic/16/62/63/97m58PICyWM_1024.jpg"));

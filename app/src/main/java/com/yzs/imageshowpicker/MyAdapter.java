@@ -60,7 +60,7 @@ public class MyAdapter extends BaseAdapter {
         final List<ImageBean> list = getItem(position);
         Log.e("list", "======" + list.size());
         holder.pickerView.setImageLoaderInterface(new Loader());
-        holder.pickerView.setMaxNum(100);
+        holder.pickerView.setMaxNum(9);
         holder.pickerView.setNewData(list);
         //展示有动画和无动画
         if (position % 2 == 1) {
@@ -75,6 +75,7 @@ public class MyAdapter extends BaseAdapter {
 
                 list.add(new ImageBean("http://pic78.huitu.com/res/20160604/1029007_20160604114552332126_1.jpg"));
                 holder.pickerView.addData(new ImageBean("http://pic78.huitu.com/res/20160604/1029007_20160604114552332126_1.jpg"));
+
             }
 
             @Override
