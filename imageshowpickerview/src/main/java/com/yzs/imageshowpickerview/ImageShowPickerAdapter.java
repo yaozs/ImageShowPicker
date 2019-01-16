@@ -67,7 +67,7 @@ public class ImageShowPickerAdapter extends RecyclerView.Adapter<ImageShowPicker
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         FrameLayout frameLayout = new FrameLayout(context);
         parent.addView(frameLayout);
-        frameLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+        //frameLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
         ViewHolder vh = new ViewHolder(frameLayout, imageLoaderInterface, this);
 
         frameLayout.addView(vh.iv_pic);
