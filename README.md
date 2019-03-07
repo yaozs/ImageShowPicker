@@ -44,7 +44,7 @@ Gradle
 
 ```groovy
 dependencies{
-   compile 'com.github.yaozs:ImageShowPicker:1.0.0' //最新版本
+   compile 'com.github.yaozs:ImageShowPicker:1.0.1' //最新版本
 }
 ```
 ```java
@@ -85,6 +85,8 @@ dependencies{
         pickerView.getDataList();
 ```
         
+## 感谢sfshine提交的兼容代码
+
 
 ## 本人的其他项目
 [YzsLib——超好用的开发框架](https://github.com/yaozs/YzsLib)
